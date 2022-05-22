@@ -8,10 +8,10 @@ function help_func {
 }
 
 home=$HOME
-inst_temp=$(readlink -f $(which bamana))
+inst_temp=$(readlink -f $(which io.ebruni.bamana))
 inst_temp="$(dirname "$inst_temp")"
 installation_dir="$(dirname "$inst_temp")"
-jar_location=$installation_dir/bamana/Bamana.jar
+jar_location=$installation_dir/io.ebruni.bamana/Bamana.jar
 case $1 in
 	"init")
 		OPTIND=2
@@ -174,10 +174,10 @@ case $1 in
 		  esac
 		done
 		if [ $i = true ] && [ $b = false ] && [ $s = false ] && [ $D = false ]; then
-			bamana listb
+			io.ebruni.bamana listb
 			echo "Choose a backup to restore a snapshot from by writing its index:"
 			read -p "> " -e b_identificativo
-			bamana lists -b $b_identificativo
+			io.ebruni.bamana lists -b $b_identificativo
 			echo "Choose the snapshot to restore by writing its index:"
 			read -p "> " -e s_identificativo
 			echo $s_identificativo
@@ -247,7 +247,7 @@ case $1 in
 		  esac
 		done
 		if [ $i = true ] && [ $b = false ] && [ $A = false ]; then
-			bamana listb
+			io.ebruni.bamana listb
 			echo "Choose a backup to change its archive path:"
 			read -p "> " -e b_identificativo
 			echo $b_identificativo

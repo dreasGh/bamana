@@ -1,6 +1,6 @@
 # Bamana
 
-[![Build Status](https://travis-ci.org/ebruni/bamana.svg?branch=master)](https://travis-ci.org/ebruni/bamana)
+[![Build Status](https://travis-ci.org/ebruni/io.ebruni.bamana.svg?branch=master)](https://travis-ci.org/ebruni/io.ebruni.bamana)
 
 **Bamana is a free** (GNU AGPLv3) **command line file based incremental backup software** for GNU/Linux written in Java, optimized for SSDs and multicore processors, sooner or later to be ported to Windows and MacOS.
 
@@ -33,21 +33,21 @@ Suggestions are warmly welcome.
 Binaries are not available yet, anyway compiling from source is extremely easy. Just be sure to have git and either OpenJDK 7+ or Oracle JDK 7+ in your system before running the installer.
 
 ```
-git clone https://github.com/ebruni/bamana
-cd bamana
+git clone https://github.com/ebruni/io.ebruni.bamana
+cd io.ebruni.bamana
 sudo ./SETUP
 ```
 and follow the instructions.
 
 ### Usage
 Step 1. Initialize a backup for the directory you want to backup. `cd` to the directory and type:  
-`bamana init -i`
+`io.ebruni.bamana init -i`
 
 Step 2. Take a snapshot of that directory. `cd` to the directory and type:  
-`(sudo) bamana snap -i`  
+`(sudo) io.ebruni.bamana snap -i`  
 
 Step 3. Restore a snapshot. `cd` to the directory where you want to restore the snapshot and type:  
-`(sudo) bamana restore -i`
+`(sudo) io.ebruni.bamana restore -i`
 
 Using sudo is advised to avoid missing permissions related issues.
 

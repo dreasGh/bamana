@@ -16,26 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
 
-public class SingleThreadProgressPrinter extends ProgressPrinter {
+public class StaticStuff {
 
-	public SingleThreadProgressPrinter(double elements_count) {
-		super(elements_count);
-	}
+	static char escapeChar = '\\';
+	static String[] specialChars = new String[] { "\\", " " };
+	static String escapeCharString = "\\";
+	static final int MAJOR = 0;
+	static final int MINOR = 0;
+	static final int REVISION = 1;
+	static final long NANOSECONDS_MIN_GAP = 100000000;
 
-	
-	synchronized void elaboratePercentage(boolean last)  {
-		nanosecondsIn = System.nanoTime();
-		if (elementsVisited < elements_count) { // #192
-			elementsVisited++;
-			if (nanosecondsIn - nanosecondsOut > StaticStuff.NANOSECONDS_MIN_GAP) {
-				printProgress();
-				nanosecondsOut = System.nanoTime();
-			}
-		} else {
-			printProgress();
-		}
-	}
-	
+
 }

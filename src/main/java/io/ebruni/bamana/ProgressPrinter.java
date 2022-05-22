@@ -16,23 +16,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package metadataRecords;
+package io.ebruni.bamana;
 
-public class DirectoryMetadata extends Metadata {
+public abstract class ProgressPrinter {
 
-	public DirectoryMetadata(String[] metadataArray) {
-		super(metadataArray);
+	protected double elements_count, elementsVisited = 0;
+	protected long nanosecondsOut, nanosecondsIn;
+	
+	public ProgressPrinter(double elements_count) {
+		this.elements_count = elements_count;
+		nanosecondsOut = System.nanoTime();
+	}
+	
+	void printProgress() {
+		int percentuale = (int) ((elementsVisited / elements_count) * 100);
+		System.out.print("\r[");
+		for (int i = 0; i < percentuale / 2; i++) {
+			System.out.print("#");
+		}
+		for (int i = 0; i < 50 - (percentuale / 2); i++) {
+			System.out.print(".");
+		}
+		System.out.print(
+				"] " + percentuale + "%   " + (int) elementsVisited + "/" + (int) elements_count + " items processed");
 	}
 
-	@Override
-	public void unpackMetadataFromArray(String[] metadataArray) {
-		name = metadataArray[0];
-		owner = metadataArray[1];
-		group = metadataArray[2];
-		permissions = metadataArray[3];
-		creationTime = metadataArray[4];
-		lastAccessTime = metadataArray[5];
-		lastModifiedTime = metadataArray[6];
-	}
+	abstract void elaboratePercentage(boolean last);
 	
 }

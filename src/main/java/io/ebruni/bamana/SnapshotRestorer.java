@@ -16,22 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
-
+import io.ebruni.bamana.utility.IOutilities;
 import metadataRecords.DirectoryMetadata;
 import metadataRecords.FileMetadata;
 import metadataRecords.Metadata;
 import metadataRecords.SymlinkMetadata;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.List;
 
 public class SnapshotRestorer {
 	ProgressPrinter progressPrinter;
@@ -45,7 +41,7 @@ public class SnapshotRestorer {
 		destinationPath = Paths.get(args[1]);
 		int snapshotIndex = Integer.parseInt(args[2]);
 		Path homePath = Paths.get(args[3]);
-		Path backupsPath = Paths.get(homePath + "/.bamana/backups.txt");
+		Path backupsPath = Paths.get(homePath + "/.io.ebruni.bamana/backups.txt");
 		List<String> backupDetails = StaticTools.getBackupDetails(backupsPath, backupIndex);
 		String backupName = backupDetails.get(0);
 		Path sourcePath = Paths.get(backupDetails.get(1));

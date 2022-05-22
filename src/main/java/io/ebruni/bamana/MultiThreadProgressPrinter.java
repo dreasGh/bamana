@@ -16,31 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
 
-public abstract class ProgressPrinter {
-
-	protected double elements_count, elementsVisited = 0;
-	protected long nanosecondsOut, nanosecondsIn;
+public class MultiThreadProgressPrinter extends ProgressPrinter {
 	
-	public ProgressPrinter(double elements_count) {
-		this.elements_count = elements_count;
-		nanosecondsOut = System.nanoTime();
-	}
-	
-	void printProgress() {
-		int percentuale = (int) ((elementsVisited / elements_count) * 100);
-		System.out.print("\r[");
-		for (int i = 0; i < percentuale / 2; i++) {
-			System.out.print("#");
-		}
-		for (int i = 0; i < 50 - (percentuale / 2); i++) {
-			System.out.print(".");
-		}
-		System.out.print(
-				"] " + percentuale + "%   " + (int) elementsVisited + "/" + (int) elements_count + " items processed");
+	public MultiThreadProgressPrinter(double elementsCount) {
+		super(elementsCount);
 	}
 
-	abstract void elaboratePercentage(boolean last);
-	
+	@Override
+	synchronized void elaboratePercentage(boolean last) {
+		nanosecondsIn = System.nanoTime();
+		if (!last) {
+			elementsVisited++;
+			if (nanosecondsIn - nanosecondsOut > StaticStuff.NANOSECONDS_MIN_GAP) {
+				printProgress();
+				nanosecondsOut = System.nanoTime();
+			}
+		} else {
+			printProgress();
+		}
+	}
 }

@@ -16,7 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
+
+import io.ebruni.bamana.utility.IOutilities;
+import metadataRecords.DirectoryMetadata;
+import metadataRecords.FileMetadata;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,9 +28,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
-
-import metadataRecords.DirectoryMetadata;
-import metadataRecords.FileMetadata;
 
 public class RestoreChecker {
 

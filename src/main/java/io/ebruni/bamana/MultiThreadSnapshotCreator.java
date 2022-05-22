@@ -16,23 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import io.ebruni.bamana.metadata.DirectoryMetadata;
+import io.ebruni.bamana.metadata.FileMetadata;
+import io.ebruni.bamana.metadata.Metadata;
+import io.ebruni.bamana.metadata.SymlinkMetadata;
+import io.ebruni.bamana.utility.IOutilities;
+
+import java.io.*;
+import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.PosixFileAttributes;
-import java.nio.file.attribute.PosixFilePermissions;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
@@ -42,12 +37,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
-
-import metadataRecords.DirectoryMetadata;
-import metadataRecords.FileMetadata;
-import metadataRecords.Metadata;
-import metadataRecords.SymlinkMetadata;
 
 public class MultiThreadSnapshotCreator {
 

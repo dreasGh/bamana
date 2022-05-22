@@ -16,9 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
 
-import static org.junit.Assert.assertTrue;
+import io.ebruni.bamana.utility.IOutilities;
+import org.junit.Test;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -26,7 +27,7 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 
 public class MegaTest {
 
@@ -37,7 +38,7 @@ public class MegaTest {
 		String sourceDir = currentDir + "/Bamana/testResources/source";
 		String homeDir = currentDir + "/Bamana/testResources/home";
 		String expectedLogsDir = currentDir + "/Bamana/testResources/expectedLogs";
-		String logsDir = homeDir + "/.bamana/logs";
+		String logsDir = homeDir + "/.io.ebruni.bamana/logs";
 		Path logsPath = Paths.get(logsDir);
 		String name = "", fileSystem = "";
 		new BackupInitializer(new String[] { archiveDir, sourceDir, name, homeDir }).init();

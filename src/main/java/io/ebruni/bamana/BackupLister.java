@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -34,7 +34,7 @@ public class BackupLister {
 	}
 
 	public void list() throws IOException {
-		Path configDirPath = Paths.get(homePath + "/.bamana");
+		Path configDirPath = Paths.get(homePath + "/.io.ebruni.bamana");
 		Path backupsPath = Paths.get(configDirPath + "/backups.txt");
 		List<String> deserializedBackups = StaticTools.deserializeBackups(backupsPath);
 		String indexLabel = "Index", backupNameLabel = "Backup name", sourcePathLabel = "Source path",

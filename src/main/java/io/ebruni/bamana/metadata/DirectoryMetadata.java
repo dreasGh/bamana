@@ -16,25 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana.metadata;
 
-public class MultiThreadProgressPrinter extends ProgressPrinter {
-	
-	public MultiThreadProgressPrinter(double elementsCount) {
-		super(elementsCount);
+public class DirectoryMetadata extends Metadata {
+
+	public DirectoryMetadata(String[] metadataArray) {
+		super(metadataArray);
 	}
 
 	@Override
-	synchronized void elaboratePercentage(boolean last) {
-		nanosecondsIn = System.nanoTime();
-		if (!last) {
-			elementsVisited++;
-			if (nanosecondsIn - nanosecondsOut > StaticStuff.NANOSECONDS_MIN_GAP) {
-				printProgress();
-				nanosecondsOut = System.nanoTime();
-			}
-		} else {
-			printProgress();
-		}
+	public void unpackMetadataFromArray(String[] metadataArray) {
+		name = metadataArray[0];
+		owner = metadataArray[1];
+		group = metadataArray[2];
+		permissions = metadataArray[3];
+		creationTime = metadataArray[4];
+		lastAccessTime = metadataArray[5];
+		lastModifiedTime = metadataArray[6];
 	}
+	
 }

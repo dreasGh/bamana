@@ -16,7 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
+
+import io.ebruni.bamana.utility.IOutilities;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -37,7 +39,7 @@ class ArchivePathChanger {
 	}
 
 	public void cap() throws IOException {
-		Path dotBamanaPath = Paths.get(homePath + "/.bamana");
+		Path dotBamanaPath = Paths.get(homePath + "/.io.ebruni.bamana");
 		Path backupsPath = Paths.get(dotBamanaPath + "/backups.txt");
 		Path backupsPathTemp = Paths.get(dotBamanaPath + "/backups_temp.txt");
 		IOutilities.deleteFileIfExists(backupsPathTemp);

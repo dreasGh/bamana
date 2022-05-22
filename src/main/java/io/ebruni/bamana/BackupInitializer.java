@@ -16,7 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
+
+import io.ebruni.bamana.utility.IOutilities;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -35,7 +37,7 @@ public class BackupInitializer {
 	}
 
 	public void init() throws IOException {
-		Path dotBamanaPath = Paths.get(homePath + "/.bamana"); // #83
+		Path dotBamanaPath = Paths.get(homePath + "/.io.ebruni.bamana"); // #83
 		Path backupsPath = Paths.get(dotBamanaPath + "/backups.txt");
 		IOutilities.createDirectories(dotBamanaPath);
 		IOutilities.createFileIfNotExists(backupsPath);

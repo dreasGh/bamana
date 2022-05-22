@@ -16,30 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package metadataRecords;
+package io.ebruni.bamana.metadata;
 
 import java.util.Objects;
 
-public class FileMetadata extends Metadata {
+public class SymlinkMetadata extends Metadata {
 
-	public FileMetadata(String[] metadataArray) {
+	public SymlinkMetadata(String[] metadataArray) {
 		super(metadataArray);
 	}
 
-	String hash;
+	String link;
 
-	public String getHash() {
-		return hash;
+	public String getLink() {
+		return link;
 	}
 
-	public void setHash(String hash) {
-		this.hash = hash;
+	public void setLink(String link) {
+		this.link = link;
 	}
-
+	
 	@Override
 	public void unpackMetadataFromArray(String[] metadataArray) {
 		name = metadataArray[0];
-		hash = metadataArray[1];
+		link = metadataArray[1];
 		owner = metadataArray[2];
 		group = metadataArray[3];
 		permissions = metadataArray[4];
@@ -51,19 +51,18 @@ public class FileMetadata extends Metadata {
     @Override
     public boolean equals(Object o) {
         if (o == this) return true;
-        if (!(o instanceof FileMetadata)) {
+        if (!(o instanceof SymlinkMetadata)) {
             return false;
         }
-        FileMetadata metadata = (FileMetadata) o;
+        SymlinkMetadata metadata = (SymlinkMetadata) o;
         return super.equals(o) &&
-        		Objects.equals(hash, metadata.hash) &&
+        		Objects.equals(link, metadata.link) &&
         		Objects.equals(creationTime, metadata.creationTime) &&
         		Objects.equals(lastModifiedTime, metadata.lastModifiedTime);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), hash, creationTime, lastModifiedTime);
+        return Objects.hash(super.hashCode(), link, creationTime, lastModifiedTime);
     }
-
 }

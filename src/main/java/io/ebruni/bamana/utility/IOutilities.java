@@ -16,19 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana.utility;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -38,7 +28,7 @@ import java.util.List;
 
 public class IOutilities {
 
-	static String readLine(BufferedReader br, Path path) throws IOException {
+	public static String readLine(BufferedReader br, Path path) throws IOException {
 		try {
 			return br.readLine();
 		} catch (IOException e) {
@@ -46,7 +36,7 @@ public class IOutilities {
 		}
 	}
 
-	static void deleteFileIfExists(Path path) throws IOException {
+	public static void deleteFileIfExists(Path path) throws IOException {
 		try {
 			Files.deleteIfExists(path);
 		} catch (IOException e) {
@@ -54,7 +44,7 @@ public class IOutilities {
 		}
 	}
 	
-	static boolean createFileIfNotExists(Path path) throws IOException { // #87, #186
+	public static boolean createFileIfNotExists(Path path) throws IOException { // #87, #186
 		if (Files.notExists(path) || !path.toFile().exists()) {
 			Files.createFile(path); // #88
 			return true;
@@ -62,7 +52,7 @@ public class IOutilities {
 		return false;
 	}
 
-	static void writeStringAndNewLineToBufferedWriter(String line, BufferedWriter writer, Path path) throws IOException {
+	public static void writeStringAndNewLineToBufferedWriter(String line, BufferedWriter writer, Path path) throws IOException {
 		try {
 			writer.write(line);
 			writer.newLine();
@@ -71,7 +61,7 @@ public class IOutilities {
 		}
 	}
 	
-	static void flushAndCloseWriter(BufferedWriter writer, Path path) throws IOException {
+	public static void flushAndCloseWriter(BufferedWriter writer, Path path) throws IOException {
 		try {
 			writer.flush();
 			writer.close();
@@ -80,7 +70,7 @@ public class IOutilities {
 		}
 	}
 	
-	static void moveFile(Path tempPath, Path defPath) throws IOException {
+	public static void moveFile(Path tempPath, Path defPath) throws IOException {
 		try {
 			Files.move(tempPath, defPath, StandardCopyOption.REPLACE_EXISTING); // #187
 		} catch (FileAlreadyExistsException faee) {
@@ -117,7 +107,7 @@ public class IOutilities {
 		}
 	}
 	
-	static void createDirectories(Path currentRestorePath) throws IOException {
+	public static void createDirectories(Path currentRestorePath) throws IOException {
 		try {
 			Files.createDirectories(currentRestorePath); // #188
 		} catch (IOException ex) {

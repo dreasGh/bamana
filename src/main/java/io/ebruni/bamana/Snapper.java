@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,7 +37,7 @@ public class Snapper {
 		sourcePath = Paths.get(args[0]); // #94
 		name = args[1];
 		homePath = Paths.get(args[2]);
-		dotBamanaPath = Paths.get(homePath + "/.bamana");
+		dotBamanaPath = Paths.get(homePath + "/.io.ebruni.bamana");
 		backupsPath = Paths.get(dotBamanaPath + "/backups.txt");
 		// #143, #96
 	}

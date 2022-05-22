@@ -16,7 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package bamana;
+package io.ebruni.bamana;
+
+import io.ebruni.bamana.utility.IOutilities;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,16 +58,16 @@ public class Logger {
 	}
 
 	void setLogPaths(String home) {
-		copyErrorsLogPath = Paths.get(home + "/.bamana/logs/" + timestamp + "/errors/copy/copy_errors.log");
-		dataErrorsLogPath = Paths.get(home + "/.bamana/logs/" + timestamp + "/errors/data/data_errors.log");
-		metadataErrorsLogPath = Paths.get(home + "/.bamana/logs/" + timestamp + "/errors/metadata/metadata_errors.log");
-		unreadableLogPath = Paths.get(home + "/.bamana/logs/" + timestamp + "/errors/unreadable/unreadable.log");
+		copyErrorsLogPath = Paths.get(home + "/.io.ebruni.bamana/logs/" + timestamp + "/errors/copy/copy_errors.log");
+		dataErrorsLogPath = Paths.get(home + "/.io.ebruni.bamana/logs/" + timestamp + "/errors/data/data_errors.log");
+		metadataErrorsLogPath = Paths.get(home + "/.io.ebruni.bamana/logs/" + timestamp + "/errors/metadata/metadata_errors.log");
+		unreadableLogPath = Paths.get(home + "/.io.ebruni.bamana/logs/" + timestamp + "/errors/unreadable/unreadable.log");
 		immediateCheckErrorsLogPath = Paths
-				.get(home + "/.bamana/logs/" + timestamp + "/errors/immediate_check/immediate_check.log");
+				.get(home + "/.io.ebruni.bamana/logs/" + timestamp + "/errors/immediate_check/immediate_check.log");
 		restoreCheckErrorsLogPath = Paths
-				.get(home + "/.bamana/logs/" + timestamp + "/errors/restore_check/restore_check.log");
+				.get(home + "/.io.ebruni.bamana/logs/" + timestamp + "/errors/restore_check/restore_check.log");
 		metadataRestoreErrorsLogPath = Paths
-				.get(home + "/.bamana/logs/" + timestamp + "/errors/metadata_restore/metadata_restore.log");
+				.get(home + "/.io.ebruni.bamana/logs/" + timestamp + "/errors/metadata_restore/metadata_restore.log");
 		
 		UNREADABLE_ELEMENTS_LOG_MESSAGE = "Errors occurred while trying to read some elements, "
 				+ "perhaps due to missing permissions or broken symlinks. See " + unreadableLogPath
@@ -82,7 +84,7 @@ public class Logger {
 	
 	public Path logFatalException(Exception ex, String home) throws IOException {
 		String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()); // #189
-		Path logPath = Paths.get(home + "/.bamana/" + timestamp + ".log");
+		Path logPath = Paths.get(home + "/.io.ebruni.bamana/" + timestamp + ".log");
 		StringWriter sw = new StringWriter();
 		ex.printStackTrace(new PrintWriter(sw));
 		IOutilities.createFileIfNotExists(logPath);
