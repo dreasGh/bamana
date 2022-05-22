@@ -28,6 +28,8 @@ import java.util.List;
 
 public class IOutilities {
 
+	private IOutilities() {}
+
 	public static String readLine(BufferedReader br, Path path) throws IOException {
 		try {
 			return br.readLine();
