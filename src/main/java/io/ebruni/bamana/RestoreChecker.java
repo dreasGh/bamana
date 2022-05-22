@@ -18,9 +18,9 @@
 
 package io.ebruni.bamana;
 
+import io.ebruni.bamana.metadata.DirectoryMetadata;
+import io.ebruni.bamana.metadata.FileMetadata;
 import io.ebruni.bamana.utility.IOutilities;
-import metadataRecords.DirectoryMetadata;
-import metadataRecords.FileMetadata;
 
 import java.io.BufferedReader;
 import java.io.File;

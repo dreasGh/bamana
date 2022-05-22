@@ -31,14 +31,18 @@ import static org.junit.Assert.assertTrue;
 
 public class MegaTest {
 
-	@Test
+	//@Test
 	public void initSnapRestore() throws Exception {
-		String currentDir = System.getProperty("user.dir");
-		String archiveDir = currentDir + "/Bamana/testResources/archive";
-		String sourceDir = currentDir + "/Bamana/testResources/source";
-		String homeDir = currentDir + "/Bamana/testResources/home";
-		String expectedLogsDir = currentDir + "/Bamana/testResources/expectedLogs";
-		String logsDir = homeDir + "/.io.ebruni.bamana/logs";
+		String resourceDir = Paths.get("src","test", "resources")
+				.toFile()
+				.getAbsolutePath();
+
+		String archiveDir = resourceDir + "/archive";
+		String sourceDir = resourceDir + "/source";
+		String homeDir = resourceDir + "/home";
+		String expectedLogsDir = resourceDir + "/expectedLogs";
+		String logsDir = resourceDir + "/logs";
+
 		Path logsPath = Paths.get(logsDir);
 		String name = "", fileSystem = "";
 		new BackupInitializer(new String[] { archiveDir, sourceDir, name, homeDir }).init();

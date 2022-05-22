@@ -18,11 +18,11 @@
 
 package io.ebruni.bamana;
 
+import io.ebruni.bamana.metadata.DirectoryMetadata;
+import io.ebruni.bamana.metadata.FileMetadata;
+import io.ebruni.bamana.metadata.Metadata;
+import io.ebruni.bamana.metadata.SymlinkMetadata;
 import io.ebruni.bamana.utility.IOutilities;
-import metadataRecords.DirectoryMetadata;
-import metadataRecords.FileMetadata;
-import metadataRecords.Metadata;
-import metadataRecords.SymlinkMetadata;
 
 import java.io.BufferedReader;
 import java.io.IOException;

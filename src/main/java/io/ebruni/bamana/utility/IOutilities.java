@@ -101,7 +101,7 @@ public class IOutilities {
 	}
 	// #91
 	
-	static void createSymlink(Path link, Path target) throws IOException {
+	public static void createSymlink(Path link, Path target) throws IOException {
 		try {
 			Files.createSymbolicLink(link, target);
 		} catch (IOException ex) {
